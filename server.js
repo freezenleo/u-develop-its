@@ -7,6 +7,8 @@ const mysql = require('mysql2');
 
 const inputCheck = require('./utils/inputCheck');
 
+require('dotenv').config();
+
 //Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -18,7 +20,7 @@ const db = mysql.createConnection(
         //Your MySQL username,
         user: 'root',
         //Your MySQL password
-        password: '',
+        password: process.env.DB_PASS,
         database: 'election'
     },
     console.log('Connected to the election database.')
